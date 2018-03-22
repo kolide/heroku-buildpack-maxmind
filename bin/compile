@@ -8,7 +8,7 @@ ENV_DIR=$3
 
 mkdir -p $CACHE_DIR
 
-$EDITION="GeoIP2-City"
+EDITION="GeoIP2-City"
 TAR="$CACHE_DIR/$EDITION.tar.gz"
 DB="$CACHE_DIR/$EDITION.mmdb"
 
