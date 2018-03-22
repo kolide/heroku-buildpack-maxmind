@@ -8,20 +8,21 @@ ENV_DIR=$3
 
 mkdir -p $CACHE_DIR
 
-EDITION="GeoIP2-City"
-TAR="$CACHE_DIR/$EDITION.tar.gz"
-DB="$CACHE_DIR/$EDITION.mmdb"
+LIB="GeoIP2-City"
+EDITION="${LIB}_20180320"
+TAR="${CACHE_DIR}/${EDITION}.tar.gz"
+DB="${CACHE_DIR}/${LIB}.mmdb"
 
 if [ ! -f $DB ]; then
 	if [ ! -f $TAR ]; then
 		echo "-----> $EDITION: Database does not exist in cache, downloading."
 
-		aws s3 cp "s3://instacart-buildpacks/downloads/geoip2/${EDITION}.tar.gz" "${EDITION}.tar.gz"
+		aws s3 cp "s3://instacart-buildpacks/downloads/geoip2/${EDITION}.tar.gz" "${TAR}"
 	fi
 
 	echo "-----> $EDITION: Extracting $TAR"
 
-	tar -zxvf $TAR -C $CACHE_DIR --no-anchored --strip-components=1 $DB
+	tar -zxvf $TAR -C $CACHE_DIR --no-anchored --strip-components=1 "${EDITION}/${LIB}.mmdb"
 else
 	echo "-----> $EDITION: Database already exists in cache."
 fi
