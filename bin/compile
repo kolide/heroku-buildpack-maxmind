@@ -22,13 +22,9 @@ if [ ! -f $DB ]; then
 	echo "-----> $EDITION: Extracting $TAR"
 
 	tar -zxvf $TAR -C $CACHE_DIR --no-anchored --strip-components=1 $DB
-
-	touch $LAST
 else
 	echo "-----> $EDITION: Database already exists in cache."
 fi
-
-OUTPUT="$BUILD_DIR/$SAVE"
 
 echo "-----> $EDITION: Copying $DB to $OUTPUT"
 
