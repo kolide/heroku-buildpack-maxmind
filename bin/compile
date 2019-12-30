@@ -14,7 +14,7 @@ OUTPUT="${BUILD_DIR}/config/maxmind"
 if [ ! -f $DB ]; then
 	if [ ! -f $TAR ]; then
 		echo "-----> GeoLite2-City: Database does not exist in cache, downloading."
-	        curl -o $TAR -L "https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz"
+	        curl -o $TAR -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=$MAXMIND_LICENSE_KEY&suffix=tar.gz"
 	fi
 
 	echo "-----> GeoLite2-City: Extracting $TAR"
